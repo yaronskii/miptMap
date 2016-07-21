@@ -1,0 +1,92 @@
+.mapImage {
+	margin-top: 50px;
+	text-align: right;
+	float: left;
+	width: 80%;
+	padding: 10px;
+}
+.mapText{
+	margin-top: 50px;
+	float: left;
+	width: 20%;
+	padding: 10px;
+}
+.mapImage > img{
+	width: 100%;
+}
+.mapImage2
+{
+	display: block;
+	width:60%;
+	height:30%;
+	text-align: right;
+	margin:-100px 0 0 -150px;
+}
+.clesrboth{
+	clear: both;
+}
+
+.rightPart{
+	margin-top: 10px;
+	text-align: right;
+	float: left;
+	width: 80%;
+	padding: 10px;
+}
+
+.mainPart{
+	margin-top: 30px;
+	padding: 10px;
+}
+.tabText{
+	margin-top: 50px;
+	float: left;
+	width: 20%;
+	padding: 10px;
+	color: #0914BB;
+	background-color: white;
+}
+
+.tabPanel{
+	background-color: white;
+}
+.row-table{
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+.col-table-cell{
+    display: table-cell;
+    vertical-align: top;
+}
+.col-table-cell:nth-of-type(1){
+    background: #ccc;
+}
+.col-table-cell:nth-of-type(2){
+    background: #f7f7f7;
+}
+.prokrutka {
+height: 100%; /* высота нашего блока */
+width: 100%; /* ширина нашего блока */
+background: #fff; /* цвет фона, белый */
+border: 1px solid #C1C1C1; /* размер и цвет границы блока */
+overflow-y: scroll; /* прокрутка по вертикали */
+}
+.row-flex, .row-flex > div[class*='col-'] {  
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex:1 1 auto;
+}
+
+.row-flex-wrap {
+	-webkit-flex-flow: row wrap;
+    align-content: flex-start;
+    flex:0;
+}
+
+.row-flex > div[class*='col-'] {
+	 margin:-.2px; /* hack adjust for wrapping */
+}

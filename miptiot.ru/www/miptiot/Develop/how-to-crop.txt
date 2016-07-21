@@ -1,0 +1,2 @@
+convert photo.jpg -crop 150x100 image_%d.jpg
+

@@ -1,0 +1,34 @@
+.svgGgeen:hover, .svgGgeen:active{
+  opacity: 0.6;
+  fill: green;
+}
+
+.svgPink:hover, .svgPink:active{
+  opacity: 0.6;
+  fill: purple;
+}
+
+.svgLight:hover, .svgLight:active{
+  opacity: 0.2;
+  fill: yellow;
+}
+
+.svgBackground {
+	fill: blue;
+}
+
+.kiwi {
+  fill: #94d31b;
+}
+.kiwi:hover {
+  fill: green;
+}
+.mystery {
+	
+}
+.mystery:hover {
+	opacity:0.9;
+}
+
+
+

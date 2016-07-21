@@ -1,25 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title>Betta</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-
-  <link rel="stylesheet" type="text/css" href="./betta.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 
+  <script src="parsePhoneBook.js"></script>
+  <script type="text/javascript" src="http://scriptjava.net/source/scriptjava/scriptjava.js"></script>
+
+  <script type="text/javascript">
+  function SendGet() {
+  	//отправляю GET запрос и получаю ответ
+  	$$a({
+  		type:'get',//тип запроса: get,post либо head
+  		url:'ajax.php',//url адрес файла обработчика
+  		data:{'q':'1'},//параметры запроса
+  		response:'text',//тип возвращаемого ответа text либо xml
+  		success:function (data) {//возвращаемый результат от сервера
+  			$$('result',$$('result').innerHTML+'<br />'+data);
+  		}
+  	});
+  }
+
+  function SendPost() {
+  	//отправляю POST запрос и получаю ответ
+  	$$a({
+  		type:'post',//тип запроса: get,post либо head
+  		url:'ajax.php',//url адрес файла обработчика
+  		data:{'department':'1'},//параметры запроса
+  		response:'text',//тип возвращаемого ответа text либо xml
+  		success:function (data) {//возвращаемый результат от сервера
+  			$$('result',$$('result').innerHTML+'<br />'+data);
+  		}
+  	});
+  }
+
+  function SendHead() {
+  	//отправляю HEAD запрос и получаю заголовок
+  	$$a({
+  		type:'head',//тип запроса: get,post либо head
+  		url:'ajax.php',//url адрес файла обработчика
+  		response:'text',//тип возвращаемого ответа text либо xml
+  		success:function (data) {//возвращаемый результат от сервера
+  			$$('result',$$('result').innerHTML+'<br />'+data);
+  		}
+  	});
+  }
+  </script>
+  
+  <title>form</title>
+  <style type="text/css">
+  	caption {
+  		background-color: #555;
+  	}
+  </style>
 </head>
 <body>
+	<div>
+		<caption>Ректорат</caption>
+		<caption>УДП. Отдел по организации приема - приемная комиссия</caption>
+	</div>
+	
+	<div id="result">Тут будет ответ от сервера</div><br /><br />
+	<div onclick="SendGet();">Отправить GET запрос через Ajax</div><br />
+	<div onclick="SendPost();">Отправить POST запрос через Ajax</div><br />
+	<div onclick="SendHead();">Отправить HEAD запрос через Ajax</div><br />
 
-<form action="action.php" name="myform" method="post"> 
-   <input type="text" name="mytext" size="50"> 
-  <textarea name="msg" cols="20" rows=”10” ></textarea> 
-    <input name="Submit" type=submit value="Отправить данные"> 
-</form>
+  <form action="action.php" method="post">
+   <p>Ваше имя: <input type="text" name="firstName" /></p>
+   <p>Ваш фамелия: <input type="text" name="secondName" /></p>
+   <p>Ваш область работы: <input type="text" name="area" /></p>
+   <p>Ваш возраст: <input type="text" name="age" /></p>
+   <p><input type="submit" /></p>
+  </form>
+
+  <caption>Ректорат</caption>
+  <caption>УДП. Отдел по организации приема - приемная комиссия</caption>
 
 </body>
 </html>
+

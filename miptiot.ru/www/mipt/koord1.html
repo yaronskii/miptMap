@@ -1,0 +1,210 @@
+ <HTML> 
+<HEAD>
+
+<SCRIPT> 
+var id, desired_accuracy = 7, counter = 0, max_counter = 20;
+
+function move() { 
+
+
+var koorleft = new Array(1, 37.516764, 37.517991, 37.521893, 37.523214, 37.515467, 37.520249);
+var koortop = new Array(1, 55.929084, 55.930489, 55.931272, 55.927677, 55.929713, 55.930762);
+var pixleft = new Array(1, 135, 179, 448, 763, 67, 321);
+var pixtop = new Array(1, 409, 203, 59, 341, 285, 134);
+var  tomin = 200;
+var  tomax = 200;
+var  itomax = 0;
+var  itomin = 0;
+var  lefmin = 200;
+var  lefmax = 200;
+var  ilefmax = 0;
+var  ilefmin = 0;
+// Вводим реальные координаты их гео
+var  toproba = window.to;
+var  lefproba = window.lef;
+var  kk = 0;
+alert('Широта: ' + toproba + 'Долгота: ' + lefproba);
+  if (toproba < koortop[3])
+   {
+   if (toproba > koortop[4])
+    {
+       if (lefproba > koorleft[5])
+    {
+        if (koorleft[4] > lefproba)
+    {
+
+for (var i = 1; i <= 6; i++) 
+{ 
+  kk = i;
+ if (toproba <= koortop[i])
+  {
+   if (tomax > koortop[i] - toproba)
+  {
+   tomax = koortop[i] - toproba;
+   itomax = i;
+   }
+  }
+  else
+  if (tomin > toproba - koortop[i])
+  {
+   tomin = toproba - koortop[i];
+   itomin = i;
+  }
+  
+    if (lefproba <= koorleft[i])
+    {
+     if (lefmax >= koorleft[i] - lefproba)
+     {
+      lefmax = koorleft[i] - lefproba;
+      ilefmax = i;
+     }
+	}
+     else
+   if (lefmin > lefproba - koorleft[i])
+   {
+     lefmin = lefproba - koorleft[i];
+	 ilefmin = kk;
+   }
+} 
+
+  
+	var xleft1 = (lefproba-koorleft[ilefmin])*(pixleft[ilefmax]-pixleft[ilefmin]);
+var xleft2 = (koorleft[ilefmax]-koorleft[ilefmin]);
+var xleft = -21 + pixleft[ilefmin] + xleft1/xleft2;
+
+ var xtop1 = (toproba-koortop[itomax])*(pixtop[itomin]-pixtop[itomax]);
+ var xtop2 = (koortop[itomin]-koortop[itomax]);
+ var xtop = -35 + pixtop[itomax] + (xtop1/xtop2);
+ var elem = document.getElementById("lv");
+      elem.style.top=xtop; //Перемещение по OY 
+      elem.style.left=xleft; //Перемещение по OX 
+      elem.style.zIndex=40; //Вывод на передний план
+ 	      }
+ 	  else
+	  {
+ 	 alert('Вы за пределами кампуса МФТИ (восточнее) '); 
+	   return;
+	 }
+ 		}
+ 	else
+	{
+ 	 alert('Вы Вы за пределами кампуса МФТИ (западнее) '); 
+	  return;
+	 }
+ 	}
+ 	else
+	{
+ 	 alert('Вы за пределами кампуса МФТИ (южнее) '); 
+	 return;
+	 }
+   }
+  else
+     {
+  	 alert('Вы за пределами кампуса МФТИ (севернее) ');
+	  return;
+	 }
+ } 
+function getCoordinates() {
+var lef = 0;
+var to = 0;
+  if (navigator.geolocation)
+	{
+		id = navigator.geolocation.watchPosition(showCoordinates,
+							 showErrorHighAcc,
+							 {enableHighAccuracy:true,
+							 timeout:5000,
+							 maximumAge:0});   
+	}
+	else
+	{
+		alert('Геолокация не поддерживается текущим браузером.');
+	}
+  
+  
+}
+function showCoordinates(position) {
+
+
+counter++;
+	if (position.coords.accuracy < desired_accuracy || counter > max_counter)
+	{
+		window.to = position.coords.latitude;
+        window.lef = position.coords.longitude;
+		navigator.geolocation.clearWatch(id);
+		proc=window.setTimeout("move()",100);
+	}
+}
+function showErrorHighAcc(error)
+{
+	navigator.geolocation.clearWatch(id);
+	counter = max_counter + 1;
+	switch(error.code)
+	{
+		case error.PERMISSION_DENIED:
+			alert('Запрос блокирован пользователем.')
+			break;
+		case error.POSITION_UNAVAILABLE:
+			alert('Информация о местоположении недоступна.')
+			break;
+		case error.TIMEOUT:
+			alert('Не удалось определить местоположение с повышенной точностью. Попытка определить с меньшей.')
+			navigator.geolocation.getCurrentPosition(showCoordinates,
+													 showErrorLowAcc,
+													 {enableHighAccuracy:false,
+													 timeout:10000,
+													 maximumAge:0});
+			break;
+		default:
+			alert('Произошла неизвестная ошибка.')
+			break;
+	}
+}
+
+function showErrorLowAcc(error)
+{
+	switch(error.code)
+	{
+		case error.PERMISSION_DENIED:
+			alert('Запрос блокирован пользователем.')
+			break;
+		case error.POSITION_UNAVAILABLE:
+			alert('Информация о местоположении недоступна.')
+			break;
+		case error.TIMEOUT:
+			alert('Запрос превысил время ожидания.')
+			break;
+		default:
+			alert('Произошла неизвестная ошибка.')
+			break;
+	}
+}
+</script> 
+</HEAD> 
+<BODY > 
+
+<style>
+        .my_button{	
+  position:absolute; 
+  margin-left:50px;
+  margin-top:0px; 
+   width: 56px;
+    height: 30px;
+	background-color: #7DDEFF; 
+   } 
+  .ris{	
+  position:absolute; 
+  top:20;
+ }
+ </style>
+
+<div class="ris">
+<IMG ID="lv" STYLE="position:absolute;z-index:-2;top:280;left:87"  src="STRELKA.png" > 
+
+<img src="osnova.png">
+
+<BUTTON  onclick="getCoordinates()" STYLE="position:absolute;z-index:2;top:0;left:91;height:38;  color:red; width:186"> 
+<strong>координаты</strong></button> 
+</div>
+</BODY> 
+
+</HTML> 

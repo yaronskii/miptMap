@@ -1,0 +1,168 @@
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+/*.row.content {height: 450px}
+
+/* Set gray background color and 100% height */
+.sidenav {
+  padding-top: 5px;
+  background-color: grey;
+  height: 100%;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+  background-color: #555;
+  color: white;
+  padding: 15px;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height:auto;} 
+}
+@import "compass/css3";
+
+.wrapper {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;  
+  
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  
+  font-weight: bold;
+  text-align: center;
+}
+
+.wrapper > * {
+  padding: 10px;
+  flex: 1 100%;
+}
+
+.header {
+  background: tomato;
+}
+
+.footer {
+  background: lightgreen;
+}
+
+.main {
+  text-align: left;
+  background: deepskyblue;
+}
+
+.aside-1 {
+  background: gold;
+}
+
+.aside-2 {
+  background: hotpink;
+}
+
+@media all and (min-width: 600px) {
+  .aside { flex: 1 auto; }
+  .battoms { display: none; }
+}
+
+@media all and (min-width: 800px) {
+  .main    { flex: 3 0px; }
+  .aside-1 { order: 1; } 
+  .main    { order: 2; }
+  .aside-2 { order: 3; }
+  .footer  { order: 4; }
+}
+
+.gutter{
+  padding: 10px;
+}
+.rowMargin{
+  margin-top: 10px;
+}
+.ex:hover, .ex:active{
+  opacity: 0.6;
+  background-color: red;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.light{
+  background-color: yellow;
+}
+.red{
+  background-color: red;
+}
+.content{
+  background-color: red;
+}
+.map{
+  margin-bottom: 60px;
+}
+.battoms{
+  display: table-column;
+}
+.yellow{
+  background-color: yellow;
+  opacity: 1;
+}
+.click {
+  background-color:green;
+  opacity: 0.6;
+}
+.white{
+  background-color: white;
+}
+.test{
+
+}
+
+.svgGgeen:hover, .svgGgeen:active{
+  opacity: 0.6;
+  fill: green;
+}
+
+.svgPink:hover, .svgPink:active{
+  opacity: 0.6;
+  fill: purple;
+}
+
+.svgLight:hover, .svgLight:active{
+  opacity: 0.2;
+  fill: yellow;
+}
+
+.svgBackground {
+  fill: blue;
+}
+
+.kiwi {
+  fill: #94d31b;
+}
+.kiwi:hover {
+  fill: green;
+}
